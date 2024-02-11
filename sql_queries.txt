@@ -1,0 +1,4 @@
+CREATE TABLE users ( id integer primary key autoincrement, username varchar(100) not null, password varchar(100) not null, admin
+boolean) ;
+
+select * from users;

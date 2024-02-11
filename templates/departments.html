@@ -11,12 +11,12 @@
   <meta name="keywords" content="" />
   <meta name="description" content="" />
   <meta name="author" content="" />
-  <link rel="shortcut icon" href="images/favicon.png" type="">
+  <link rel="shortcut icon" href="/static/images/favicon.png" type="">
 
-  <title> Orthoc </title>
+  <title> Doctor AI </title>
 
   <!-- bootstrap core css -->
-  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+  <link rel="stylesheet" type="text/css" href="/static/bootstrap.css" />
 
   <!-- fonts style -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
@@ -25,12 +25,12 @@
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
 
   <!-- font awesome style -->
-  <link href="css/font-awesome.min.css" rel="stylesheet" />
+  <link href="/static/font-awesome.min.css" rel="stylesheet" />
 
   <!-- Custom styles for this template -->
-  <link href="css/style.css" rel="stylesheet" />
+  <link href="/static/style.css" rel="stylesheet" />
   <!-- responsive style -->
-  <link href="css/responsive.css" rel="stylesheet" />
+  <link href="/static/responsive.css" rel="stylesheet" />
 
 </head>
 
@@ -39,16 +39,16 @@
   <div class="hero_area">
 
     <div class="hero_bg_box">
-      <img src="images/hero-bg.png" alt="">
+      <img src="/static/images/hero-bg.png" alt="">
     </div>
 
     <!-- header section strats -->
     <header class="header_section">
       <div class="container">
         <nav class="navbar navbar-expand-lg custom_nav-container ">
-          <a class="navbar-brand" href="index.html">
+          <a class="navbar-brand" href="{{url_for('home')}}">
             <span>
-              Orthoc
+              <img src="/static/images/logo (2).png" width="200px" height="auto" alt="#">
             </span>
           </a>
 
@@ -59,25 +59,19 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link" href="index.html">Home </a>
+                <b> <a class="nav-link" href="{{url_for('home')}}">Home </a></b>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="about.html"> About</a>
+                <b><a class="nav-link" href="{{url_for('about')}}"> About</a></b>
               </li>
               <li class="nav-item active">
-                <a class="nav-link" href="departments.html">Departments <span class="sr-only">(current)</span> </a>
+                <b><a class="nav-link" href="{{url_for('department')}}">Services <span class="sr-only">(current)</span> </a></b>
               </li>
+              
               <li class="nav-item">
-                <a class="nav-link" href="doctors.html">Doctors</a>
+                <b><a class="nav-link" href="{{url_for('contact')}}">Contact Us</a></b>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="contact.html">Contact Us</a>
-              </li>
-              <form class="form-inline">
-                <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
-                  <i class="fa fa-search" aria-hidden="true"></i>
-                </button>
-              </form>
+              
             </ul>
           </div>
         </nav>
@@ -93,24 +87,24 @@
       <div class="container ">
         <div class="heading_container heading_center">
           <h2>
-            Our Departments
+            Our Services
           </h2>
           <p>
-            Asperiores sunt consectetur impedit nulla molestiae delectus repellat laborum dolores doloremque accusantium
+            Access medical advice and information anytime, anywhere. Doctor AI is always ready to assist you.
           </p>
         </div>
         <div class="row">
           <div class="col-md-3">
             <div class="box ">
               <div class="img-box">
-                <img src="images/s1.png" alt="">
+                <img src="/static/images/s1.png" alt="">
               </div>
               <div class="detail-box">
                 <h5>
-                  Cardiology
+                  <a href="{{url_for('medimate')}}">Medimate</a>
                 </h5>
                 <p>
-                  fact that a reader will be distracted by the readable page when looking at its layout.
+                  Healing Through Dialogue: Your 24/7 Medical Chat Partner.
                 </p>
               </div>
             </div>
@@ -118,14 +112,14 @@
           <div class="col-md-3">
             <div class="box ">
               <div class="img-box">
-                <img src="images/s2.png" alt="">
+                <img src="/static/images/dermo.png" alt="">
               </div>
               <div class="detail-box">
                 <h5>
-                  Diagnosis
+                  <a href="{{url_for('medimate_vision')}}">Skin Care</a>
                 </h5>
                 <p>
-                  fact that a reader will be distracted by the readable page when looking at its layout.
+                  Light, Camera, Glow: Achieve Stunning Skin advice for Webcam Moments.
                 </p>
               </div>
             </div>
@@ -133,7 +127,7 @@
           <div class="col-md-3">
             <div class="box ">
               <div class="img-box">
-                <img src="images/s3.png" alt="">
+                <img src="/static/images/s3.png" alt="">
               </div>
               <div class="detail-box">
                 <h5>
@@ -148,7 +142,7 @@
           <div class="col-md-3">
             <div class="box ">
               <div class="img-box">
-                <img src="images/s4.png" alt="">
+                <img src="/static/images/s4.png" alt="">
               </div>
               <div class="detail-box">
                 <h5>
@@ -161,11 +155,7 @@
             </div>
           </div>
         </div>
-        <div class="btn-box">
-          <a href="">
-            View All
-          </a>
-        </div>
+        
       </div>
     </div>
   </section>
@@ -176,99 +166,45 @@
   <footer class="footer_section">
     <div class="container">
       <div class="row">
-        <div class="col-md-6 col-lg-3 footer_col">
-          <div class="footer_contact">
-            <h4>
-              Reach at..
-            </h4>
-            <div class="contact_link_box">
-              <a href="">
-                <i class="fa fa-map-marker" aria-hidden="true"></i>
-                <span>
-                  Location
-                </span>
-              </a>
-              <a href="">
-                <i class="fa fa-phone" aria-hidden="true"></i>
-                <span>
-                  Call +01 1234567890
-                </span>
-              </a>
-              <a href="">
-                <i class="fa fa-envelope" aria-hidden="true"></i>
-                <span>
-                  demo@gmail.com
-                </span>
-              </a>
-            </div>
-          </div>
-          <div class="footer_social">
-            <a href="">
-              <i class="fa fa-facebook" aria-hidden="true"></i>
-            </a>
-            <a href="">
-              <i class="fa fa-twitter" aria-hidden="true"></i>
-            </a>
-            <a href="">
-              <i class="fa fa-linkedin" aria-hidden="true"></i>
-            </a>
-            <a href="">
-              <i class="fa fa-instagram" aria-hidden="true"></i>
-            </a>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-3 footer_col">
+     
+        <div class="col-md-12 col-lg-6 footer_col">
           <div class="footer_detail">
             <h4>
               About
             </h4>
             <p>
-              Beatae provident nobis mollitia magnam voluptatum, unde dicta facilis minima veniam corporis laudantium alias tenetur eveniet illum reprehenderit fugit a delectus officiis blanditiis ea.
+              At Doctor AI Brand, we believe in revolutionizing healthcare through the power of artificial intelligence. Our mission is to make advanced medical assistance accessible to everyone, bridging the gap between technology and healthcare expertise.
             </p>
           </div>
         </div>
-        <div class="col-md-6 col-lg-2 mx-auto footer_col">
+        <div class="col-md-12 col-lg-6 mx-auto footer_col">
           <div class="footer_link_box">
             <h4>
               Links
             </h4>
             <div class="footer_links">
-              <a class="" href="index.html">
+              <a class="" href="{{url_for('home')}}">
                 Home
               </a>
-              <a class="" href="about.html">
+              <a class="" href="{{url_for('about')}}">
                 About
               </a>
-              <a class="active" href="departments.html">
-                Departments
+              <a class="active" href="{{url_for('department')}}">
+                Services
               </a>
-              <a class="" href="doctors.html">
-                Doctors
-              </a>
-              <a class="" href="contact.html">
+              
+              <a class="" href="{{url_for('contact')}}">
                 Contact Us
               </a>
             </div>
           </div>
         </div>
-        <div class="col-md-6 col-lg-3 footer_col ">
-          <h4>
-            Newsletter
-          </h4>
-          <form action="#">
-            <input type="email" placeholder="Enter email" />
-            <button type="submit">
-              Subscribe
-            </button>
-          </form>
-        </div>
-      </div>
+        
       <div class="footer-info">
         <p>
           &copy; <span id="displayYear"></span> All Rights Reserved By
-          <a href="https://html.design/">Free Html Templates<br><br></a>
-            &copy; <span id="displayYear"></span> Distributed By
-            <a href="https://themewagon.com/">ThemeWagon</a>
+          <a href="https://html.design/">Doctor AI<br><br></a>
+            
         </p>
       </div>
     </div>

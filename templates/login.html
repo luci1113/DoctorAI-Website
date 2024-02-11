@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="/static/login_style.css">
+    <title>Modern Login Page</title>
+</head>
+
+<body>
+
+    <div class="container" id="container">
+        <div class="form-container sign-up">
+            <form action="/authenticate_user1" method="POST">
+                <h1>Create Account</h1>
+                <!-- <input type="text" class="form-control" placeholder="Name"> -->
+                <input type="email" class="form-control" placeholder="Email" name="username">
+                
+                <input type="password" class="form-control" placeholder="Password" name="password">
+                <button type="submit" class="btn btn-outline-success">Sign Up</button>
+            </form>
+        </div>
+        <div class="form-container sign-in">
+            <form action="/authenticate_user" method="POST">
+                {% if register_error%}
+                <p style="color:rgb(202, 88, 88);">{{register_error}}</p>
+                {% endif %}
+                <h1>Sign In</h1>
+                <!-- <div class="social-icons">
+                    <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div> -->
+                <!-- <span>or use your email password</span> -->
+                <input type="email" class="form-control" placeholder="Email" name="username">
+                <input type="password" class="form-control" placeholder="Password" name="password">
+                <a href="#">Forget Your Password?</a>
+                <button type="submit" class="btn btn-outline-success">Sign In</button>
+                {% if loginerror%}
+                <h3 style='color:red'>{{loginerror}}</h3>
+                {% endif%}
+            </form>
+        </div>
+        <div class="toggle-container">
+            <div class="toggle">
+                <img src="/static/images/logo (2).png" alt="" />
+                <div class="toggle-panel toggle-left">
+                    
+                    <h1>Welcome Back !</h1>
+                    <p>Enter your personal details to use all of site features</p>
+                    <button class="hidden" id="login">Sign In</button>
+                </div>
+                <div class="toggle-panel toggle-right">
+                    <img src="/static/images/logo (2).png" alt="" />
+                    <h1>Welcome, Friend!</h1>
+                    <p>Enter your personal details to use all of site features</p>
+                    <button class="hidden" id="register">Sign Up</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/login_script.js"></script>
+</body>
+
+</html>
