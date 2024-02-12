@@ -16,14 +16,14 @@ model = genai.GenerativeModel('gemini-pro-vision')
 app = Flask(__name__)
 app.config['SECRET_KEY']=os.urandom(24)
 
-def get_current_user():
-    user=None
-    if 'user' in session:
-        user=session['user']
-        db=get_database()
-        user_cursor=db.execute("select * from users where username=?", [user])
-        user=user_cursor.fetchone()
-        return user
+# def get_current_user():
+#     user=None
+#     if 'user' in session:
+#         user=session['user']
+#         db=get_database()
+#         user_cursor=db.execute("select * from users where username=?", [user])
+#         user=user_cursor.fetchone()
+#         return user
 
 limiter = Limiter(
     get_remote_address,
@@ -35,32 +35,37 @@ app=Flask(__name__ )
 
 @app.route('/')
 def home():
-    user=get_current_user()
-    return render_template('index.html',user=user)
+    # user=get_current_user()
+    return render_template('index.html')
 @app.route('/about')
 def about():
-    user=get_current_user()
-    return render_template('about.html',user=user)
+    # user=get_current_user()
+    return render_template('about.html')
 @app.route('/department')
 def department():
-    user=get_current_user()
-    return render_template('departments.html',user=user)
+    # user=get_current_user()
+    return render_template('departments.html')
 @app.route('/contactus')
 def contact():
-    user=get_current_user()
-    return render_template('contact.html',user=user)
+    # user=get_current_user()
+    return render_template('contact.html')
 
 
 @app.route('/medimate')
 def medimate():
-    user=get_current_user()
-    return render_template('medimate.html',user=user)
+    # user=get_current_user()
+    return render_template('medimate.html')
 
 
 @app.route('/medimate_vision')
 def medimate_vision():
-    user=get_current_user()
-    return render_template('medimate_vision.html',user=user)
+    # user=get_current_user()
+    return render_template('medimate_vision.html')
+
+@app.route('/medimate_vision')
+def medimate_vision():
+    # user=get_current_user()
+    return render_template('medimate_vision.html')
 
 @app.post('/upload')
 @limiter.limit("5/minute")
@@ -91,63 +96,63 @@ def upload():
 
 
 
-@app.route('/authenticate_user1',methods=["POST","GET"])
-def register():
-    user=get_current_user()
-    register_error=None
-    if request.method=="POST":
-        #collect information from form
-        username=request.form['username']
-        password=request.form['password']
+# @app.route('/authenticate_user1',methods=["POST","GET"])
+# def register():
+#     # user=get_current_user()
+#     register_error=None
+#     if request.method=="POST":
+#         #collect information from form
+#         username=request.form['username']
+#         password=request.form['password']
         
-        # generat a hash code for password entered by user
-        hash_password=generate_password_hash(password)
+#         # generat a hash code for password entered by user
+#         hash_password=generate_password_hash(password)
         
         
-        #coonect database
-        db=get_database()
+#         #coonect database
+#         db=get_database()
         
-        #checking duplicate
-        user_cursor=db.execute("select * from users where username=?",[username])
-        existing_user=user_cursor.fetchone()
+#         #checking duplicate
+#         user_cursor=db.execute("select * from users where username=?",[username])
+#         existing_user=user_cursor.fetchone()
         
-        if existing_user:
-            register_error="Email already taken,please enter different email."
-            return render_template("login.html",register_error=register_error)
+#         if existing_user:
+#             register_error="Email already taken,please enter different email."
+#             return render_template("login.html",register_error=register_error)
             
-        # sql query ti insert values in table
-        db.execute("INSERT INTO users(username,password,admin) VALUES(?,?,?)",(username,hash_password,'0')) 
-        # make changes in database
-        db.commit()
-        return redirect(url_for('login'))
-    return render_template('login.html',user=user)
+#         # sql query ti insert values in table
+#         db.execute("INSERT INTO users(username,password,admin) VALUES(?,?,?)",(username,hash_password,'0')) 
+#         # make changes in database
+#         db.commit()
+#         return redirect(url_for('login'))
+#     return render_template('login.html',user=user)
 
 
 
 
-@app.route('/authenticate_user',methods=["POST","GET"])
-def login():
-    user=get_current_user()
-    error=None
-    if request.method=="POST":
-        #collect information from form
-        username=request.form['username']
-        user_entered_password=request.form['password']
+# @app.route('/authenticate_user',methods=["POST","GET"])
+# def login():
+#     user=get_current_user()
+#     error=None
+#     if request.method=="POST":
+#         #collect information from form
+#         username=request.form['username']
+#         user_entered_password=request.form['password']
         
-        #coonect database
-        db=get_database()
-        # sql query ti insert values in table
-        user_cursor=db.execute("select * from users where username=? ",[username]) 
-        user=user_cursor.fetchone()
+#         #coonect database
+#         db=get_database()
+#         # sql query ti insert values in table
+#         user_cursor=db.execute("select * from users where username=? ",[username]) 
+#         user=user_cursor.fetchone()
         
-        if user:
-            if check_password_hash(user['password'],user_entered_password):
-                session['user']=user['username']
-                return redirect(url_for('home'))
-            else:
-                error="Password didnot match."
+#         if user:
+#             if check_password_hash(user['password'],user_entered_password):
+#                 session['user']=user['username']
+#                 return redirect(url_for('home'))
+#             else:
+#                 error="Password didnot match."
         
-    return render_template('login.html',loginerror=error,user=user)
+#     return render_template('login.html',loginerror=error,user=user)
 
 
 
