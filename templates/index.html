@@ -50,9 +50,6 @@
             <span>
               <img src="/static/images/logo (2).png" width="200px" height="auto" alt="#">
             </span>
-            {%if user %}
-            <p>User-{{user}}</p>
-            {% endif %}
           </a>
 
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -73,12 +70,6 @@
               
               <li class="nav-item">
                 <b><a class="nav-link" href="{{url_for('contact')}}">Contact Us</a></b>
-              </li>
-              <li class="nav-item">
-                <div class="btn-box">
-                  <a href="{{url_for('login')}}" class="btn1">
-                    Get Started
-                  </a>
               </li>
               
             </ul>
@@ -187,7 +178,7 @@
           <div class="col-md">
             <div class="box ">
               <div class="img-box">
-                <img src="/static/images/s1.png" alt="">
+                <img src="/static/images/chatbot.png" alt="">
               </div>
               <div class="detail-box">
                 <h5>

@@ -62,10 +62,9 @@ def medimate_vision():
     # user=get_current_user()
     return render_template('medimate_vision.html')
 
-@app.route('/medimate_vision')
-def medimate_vision():
-    # user=get_current_user()
-    return render_template('medimate_vision.html')
+@app.route('/women_health')
+def women_health():
+    return redirect("https://womenhealthtracker.netlify.app/")
 
 @app.post('/upload')
 @limiter.limit("5/minute")
